@@ -1,0 +1,149 @@
+$primary-color: #3f51b5;
+
+@mixin iconStyle() {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "table";
+}
+
+.header {
+  grid-area: header;
+  height: 150px;
+  padding: 20px;
+  background-color: $primary-color;
+  
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 150px;
+  
+}
+
+.table {
+  padding: 20px;
+  grid-area: table;
+  display: grid;
+  grid-template-rows: 100px 100px auto;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "table-header"
+    "table-edit"
+    "table-body";
+
+  &-header {
+    grid-area: table-header;
+    height: 100px;
+    border-bottom: solid 1px lightgrey;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 60px 50px;
+    grid-template-areas: "name DOB role . employee-edit";
+
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 100px;
+
+    &_name {
+      grid-area: name;
+    }
+
+    &_DOB {
+      grid-area: DOB;
+    }
+
+    &_role {
+      grid-area: role;
+    }
+
+    &_employee-edit{
+      grid-area: employee-edit;
+      @include iconStyle();
+      align-self: center;
+    }
+  }
+
+  &-edit {
+    grid-area: table-edit;
+    height: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 40px 50px;
+    grid-column-gap: 20px;
+    grid-template-areas: "name DOB role . submit";
+
+    &_name {
+      grid-area: name;
+      font-size: 23px;
+    }
+
+    &_DOB {
+      grid-area: DOB;
+      font-size: 23px;
+    }
+
+    &_role {
+      grid-area: role;
+      font-size: 23px;
+    }
+
+    &_submit {
+      grid-area: submit;
+      @include iconStyle();
+    }
+  }
+
+  &-body {
+    grid-area: table-body;
+    height: 300px;
+  }
+
+  &-edit_submit {
+    grid-area: submit;
+    @include iconStyle();
+  }
+}
+
+.employee {
+  padding: 20px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 50px 50px;
+  grid-column-gap: 10px;
+  grid-template-areas: "name DOB role edit delete";
+  align-items: center;
+
+  font-size: 23px;
+  border-bottom: solid 1px lightgrey;
+
+  &-name {
+    grid-area: name;
+  }
+
+  &-DOB {
+    grid-area: DOB;
+  }
+
+  &-role {
+    grid-area: role;
+  }
+  
+  &-edit {
+    grid-area: edit;
+    @include iconStyle();
+  }
+
+  &-delete {
+    grid-area: delete;
+    @include iconStyle();
+  }
+}
